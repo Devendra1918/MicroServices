@@ -1,0 +1,44 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/SalesOrderDetail",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7167
+        }
+      ],
+      "UpstreamPathTemplate": "/apigateway/SalesOrderDetailService",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Person",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7067
+        }
+      ],
+      "UpstreamPathTemplate": "/apigateway/PersonServices",
+      "UpstreamHttpMethod": [ "GET" ]
+    }
+    //,
+    //{
+    //  "DownstreamPathTemplate": "/api/Product/GetProductListusingID/{id}",
+    //  "DownstreamScheme": "https",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 7273
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/apigateway/ProductServices/{id}",
+    //  "UpstreamHttpMethod": [ "GET" ]
+    //}
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:7220"
+  }
+}
