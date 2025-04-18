@@ -18,7 +18,7 @@ export const PersonList = () => {
       {items.length === 0 ? (
         <p>Loading...</p>
       ) : (
-        <table border="1" cellPadding="8" cellSpacing="0" style={{ width: "100%", borderCollapse: "collapse" }}>
+        <table className="table table-bordered table-striped" border="1" cellPadding="8" cellSpacing="0" style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
             <tr>
               <th>Business Entity ID</th>

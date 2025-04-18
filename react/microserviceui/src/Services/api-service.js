@@ -9,8 +9,7 @@ const api = axios.create({
 });
 
 export const getAllPersonAsync = async () => {
-    try{
-        debugger
+    try{        
         const response = await api.get("/PersonServices");
         console.log(response.data);
         return response.data
