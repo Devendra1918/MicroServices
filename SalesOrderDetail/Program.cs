@@ -1,8 +1,25 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using SalesOrderDetail.Models;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = "JwtAuthDemo",
+            ValidAudience = "JwtAuthDemoUsers",
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your-super-secret-key-123456789012"))
+        };
+    });
 
+builder.Services.AddAuthorization();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -26,8 +43,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

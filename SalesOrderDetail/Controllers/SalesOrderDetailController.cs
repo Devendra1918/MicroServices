@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SalesOrderDetail.Models;
@@ -7,6 +8,7 @@ namespace SalesOrderDetail.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class SalesOrderDetailController : ControllerBase
     {
         private readonly AdventureWorks2022Context _dbcontext;
