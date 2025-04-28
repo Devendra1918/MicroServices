@@ -1,11 +1,17 @@
+// Navigation.js
 import React from "react";
 import { Link } from "react-router-dom";
+import { loginAsync } from "../Services/authservice";
+
+const handleLogin = async () => {
+    await loginAsync();
+};
 
 export const Navigation = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+        <div className="container-fluid">
           <button
             className="navbar-toggler"
             type="button"
@@ -29,6 +35,9 @@ export const Navigation = () => {
                   People
                 </Link>
               </li>
+              <li>
+                <button onClick={handleLogin}>Login (Hardcoded)</button>
+              </li>
             </ul>
             <form className="d-flex" role="search">
               <input
@@ -47,3 +56,4 @@ export const Navigation = () => {
     </>
   );
 };
+

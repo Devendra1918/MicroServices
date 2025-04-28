@@ -71,6 +71,15 @@ builder.Services.AddDbContext<AdventureWorks2022Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString"));
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -85,6 +94,7 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = string.Empty; // Optional: Serve Swagger at root
 });
 app.UseHttpsRedirection();
+app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 
